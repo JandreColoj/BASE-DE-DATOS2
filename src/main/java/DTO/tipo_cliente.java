@@ -5,45 +5,24 @@
  */
 package DTO;
 
-import java.sql.Date;
-
 /**
  *
  * @author ANDRE
  */
-public class cliente {
+public class tipo_cliente {
     
-    private int idCliente;
+    private int id;
     private String nombre;
-    private String apellidos;
-    private String telefono;
-    private String direccion;
-    private String direccionActual;
-    private String nit;
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
+    private String descripcion;
+    private Float descuento;
     private int estado;
 
-    public int getEstado() {
-        return estado;
+    public int getId() {
+        return id;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -54,36 +33,29 @@ public class cliente {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public Float getDescuento() {
+        return descuento;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setDescuento(Float descuento) {
+        this.descuento = descuento;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
-
-    public String getDireccionActual() {
-        return direccionActual;
-    }
-
-    public void setDireccionActual(String direccionActual) {
-        this.direccionActual = direccionActual;
-    }
-
+    
+    
 }

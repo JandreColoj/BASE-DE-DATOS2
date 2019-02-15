@@ -5,7 +5,7 @@
  */
 package DTO;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -19,7 +19,63 @@ public class cliente {
     private String telefono;
     private String direccion;
     private String direccionActual;
+    private String correo;
+    private Date fecha_nacimient;
+    private int tipo_cliente;
+    private int municipio;
     private String nit;
+    private int tipo_telefono;
+    private String tipoCliente;
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    public int getTipo_telefono() {
+        return tipo_telefono;
+    }
+
+    public void setTipo_telefono(int tipo_telefono) {
+        this.tipo_telefono = tipo_telefono;
+    }
+    
+    
+
+    public Date getFecha_nacimient() {
+        return fecha_nacimient;
+    }
+
+    public void setFecha_nacimient(Date fecha_nacimient) {
+        this.fecha_nacimient = fecha_nacimient;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getTipo_cliente() {
+        return tipo_cliente;
+    }
+
+    public void setTipo_cliente(int tipo_cliente) {
+        this.tipo_cliente = tipo_cliente;
+    }
+
+    public int getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(int municipio) {
+        this.municipio = municipio;
+    }
 
     public String getNit() {
         return nit;

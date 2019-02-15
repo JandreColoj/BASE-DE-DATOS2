@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login Usuario</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:body class="fondo">            
+        <div> 
+            <p:panel id="basic" header="INICIAR SESION" class="contenedor center ui-panel-login">                
+                
+                <h:form class="center-login">
+                    
+                    <p:growl id="growl" showDetail="true" sticky="true" />                      
+                    
+                    <div class="ui-g font_login">
+                        <div class="ui-g-6">
+                            <h:outputLabel value="USUARIO:"/>
+                        </div>
+                        <div class="ui-g-6">
+                            <p:inputText value="#{LoginBean.user}" required="true" />
+                        </div>
+                        
+                        <div class="ui-g-6">
+                             <h:outputLabel value="CONTRASEÑA:"/>
+                        </div>
+                        <div class="ui-g-6">
+                             <p:password value="#{LoginBean.password}" required="true" /> 
+                        </div>
+                        
+                    </div>
+
+                    <br></br>
+                    <h:commandButton action="#{LoginBean.verificarUser()}" id="btn_login" value="INGRESAR" class="btn_inicio" />
+                </h:form>       
+                   
+            </p:panel>
+        </div>
+       
+    </h:body>
+</html>
+

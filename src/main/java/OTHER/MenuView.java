@@ -29,20 +29,20 @@ public class MenuView {
         model = new DefaultMenuModel();
          
         //First submenu
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("BIENVENIDO A MI FARMACIA");
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Base de datos 2");
 
         
-        DefaultMenuItem item5 = new DefaultMenuItem("Facturacion");
-        item5.setUrl("facturacion.xhtml");
+        DefaultMenuItem item5 = new DefaultMenuItem("Clientes");
+        item5.setUrl("clientes.xhtml");
         item5.setIcon("ui-icon-tag"); 
         firstSubmenu.addElement(item5);        
         
-        DefaultMenuItem item1 = new DefaultMenuItem("Listado de ventas");
-        item1.setUrl("ventas.xhtml");
+        DefaultMenuItem item1 = new DefaultMenuItem("Empleados");
+        item1.setUrl("empleados.xhtml");
         item1.setIcon("ui-icon-cart");
         firstSubmenu.addElement(item1);
         
-        DefaultMenuItem item2 = new DefaultMenuItem("Productos");
+        /*DefaultMenuItem item2 = new DefaultMenuItem("Productos");
         item2.setUrl("productos.xhtml");
         item2.setIcon("ui-icon-suitcase");
         firstSubmenu.addElement(item2);
@@ -60,7 +60,7 @@ public class MenuView {
         DefaultMenuItem item6 = new DefaultMenuItem("Salir");
         item6.setUrl("index.xhtml");
         item6.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item6);
+        firstSubmenu.addElement(item6);*/
         
         model.addElement(firstSubmenu);
          

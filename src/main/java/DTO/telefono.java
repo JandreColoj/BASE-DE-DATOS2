@@ -5,85 +5,60 @@
  */
 package DTO;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
  * @author ANDRE
  */
-public class cliente {
+public class telefono {
     
-    private int idCliente;
-    private String nombre;
-    private String apellidos;
-    private String telefono;
-    private String direccion;
-    private String direccionActual;
-    private String nit;
+   private int id;
+   private String numero;
+   private int tipo_telefono;
+   private int id_cliente;
+   private String tipoTelefono;
 
-    public String getNit() {
-        return nit;
+    public String getTipoTelefono() {
+        return tipoTelefono;
     }
 
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-    private int estado;
-
-    public int getEstado() {
-        return estado;
+    public void setTipoTelefono(String tipoTelefono) {
+        this.tipoTelefono = tipoTelefono;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public int getId() {
+        return id;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public String getNumero() {
+        return numero;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getTipo_telefono() {
+        return tipo_telefono;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public void setTipo_telefono(int tipo_telefono) {
+        this.tipo_telefono = tipo_telefono;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getDireccionActual() {
-        return direccionActual;
-    }
-
-    public void setDireccionActual(String direccionActual) {
-        this.direccionActual = direccionActual;
-    }
-
+   
+   
+   
 }

@@ -7,9 +7,6 @@ package CAD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +28,7 @@ public class ConnectionDB{
             String url = "jdbc:oracle:thin:@"+nombre_servidor+":"+numero_puerto+":"+sid;
             
             //nombres y usuarios
-            String usuario = "Jandre";
+            String usuario = "JOSE";
             String password = "54295430";
             
             conexion = DriverManager.getConnection(url,usuario,password);
@@ -64,41 +61,4 @@ public class ConnectionDB{
         }
         
     }
- 
-    /*
-    public boolean escribir(String sql) { 
-        
-        try { 
-            Statement sentencia; 
-            sentencia = getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-            sentencia.executeUpdate(sql); 
-            getConexion().commit(); 
-            sentencia.close(); 
-
-        } catch (SQLException e) { 
-            e.printStackTrace(); 
-            System.out.print("ERROR SQL"); 
-            return false; 
-        }         
-        
-        return true; 
-    } 
-    
-    
-    public ResultSet consultar(String sql) { 
-        ResultSet resultado = null; 
-        try { 
-            Statement sentencia; 
-            sentencia = getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-            resultado = sentencia.executeQuery(sql); 
-             
-        } catch (SQLException e) { 
-            e.printStackTrace(); 
-            return null; 
-        }
-
-        return resultado; 
-    } 
-
-    */
 }

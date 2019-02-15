@@ -35,14 +35,8 @@
                             <p:column headerText="CODIGO">
                                 <p:outputLabel value="#{cli.idCliente}" />
                             </p:column>  
-                             <p:column headerText="NOMBRE">
-                                <p:outputLabel value="#{cli.nombre}" />
-                            </p:column> 
-                            <p:column headerText="APELLIDOS">
-                                 <p:outputLabel value="#{cli.apellidos}" />
-                            </p:column> 
-                            <p:column headerText="TELEFONO">
-                                <p:outputLabel value="#{cli.telefono}" />
+                             <p:column headerText="CLIENTE">
+                                <p:outputLabel value="#{cli.nombre} #{cli.apellidos}" />
                             </p:column>
                             <p:column headerText="DIRECCION">
                                 <p:outputLabel value="#{cli.direccion}" />
@@ -50,6 +44,17 @@
                             <p:column headerText="NIT">
                                 <p:outputLabel value="#{cli.nit}" />
                             </p:column> 
+                             <p:column headerText="TIPO CLIENTE">
+                                 <p:outputLabel value="#{cli.tipoCliente}" />
+                            </p:column> 
+                             <p:column headerText="TELEFONOS"> 
+                                 <p:commandLink value="VER" oncomplete="PF('dlg1').show();" actionListener="#{ClienteBean.listTelefonos(cli.idCliente)}" update="modalTelefonos">
+                                </p:commandLink>
+                            </p:column>
+                             <p:column headerText="CORREOS"> 
+                                 <p:commandLink value="VER" oncomplete="PF('dlg2').show();" actionListener="#{ClienteBean.listCorreos(cli.idCliente)}" update="modalCorreos">
+                                </p:commandLink>
+                            </p:column>
                             <p:column> 
                                 <p:commandLink value="Editar" oncomplete="PF('dlg4').show();" actionListener="#{ClienteBean.btnEditar(cli)}" update="modalEdit">
                                 </p:commandLink>
@@ -66,26 +71,111 @@
                         
                 </h:form>      
                 
+                <p:dialog header="Telefonos cliente" widgetVar="dlg1" showEffect="explode" hideEffect="explode" height="150" width="400" id="modalTelefonos">
+
+                    <p:dataTable id="table_telefonos" paginator="true" rows="7" value="#{ClienteBean.listaTelefono}" var="tel" editable="true">
+                            
+                        <p:column headerText="ID">
+                            <p:outputLabel value="#{tel.id}" />
+                        </p:column> 
+                        
+                        <p:column headerText="NUMERO">
+                            <p:outputLabel value="#{tel.numero}" />
+                        </p:column> 
+                        
+                        <p:column headerText="TIPO DE TELEFONO">
+                            <p:outputLabel value="#{tel.tipoTelefono}" />
+                        </p:column> 
+
+                       <p:column> 
+                           <p:commandLink value="Editar" oncomplete="PF('PFedTel').show();" actionListener="#{ClienteBean.btnEditar(cli)}" update="modalEdit">
+                           </p:commandLink>
+                       </p:column>
+                       <p:column>
+                           <p:commandLink value="Eliminar" oncomplete="PF('dlg5').show();"  actionListener="#{ClienteBean.btnEliminar(cli.idCliente)}">
+                           </p:commandLink>
+                       </p:column>
+                        
+                    </p:dataTable> 
+                
+                </p:dialog>
+                
+                <p:dialog header="Correos cliente" widgetVar="dlg2" showEffect="explode" hideEffect="explode" height="150" width="400" id="modalCorreos">
+
+                    <p:dataTable id="table_correos" paginator="true" rows="7" value="#{ClienteBean.listaCorreo}" var="correo" editable="true">
+                            
+                        <p:column headerText="ID">
+                            <p:outputLabel value="#{correo.id}" />
+                        </p:column> 
+                        
+                        <p:column headerText="CORREO">
+                            <p:outputLabel value="#{correo.correo}" />
+                        </p:column> 
+
+                       <!--p:column> 
+                           <p:commandLink value="Editar" oncomplete="PF('dlg4').show();" actionListener="#{ClienteBean.btnEditar(cli)}" update="modalEdit">
+                           </p:commandLink>
+                       </p:column-->
+                       <!--p:column>
+                           <p:commandLink value="Eliminar" oncomplete="PF('dlg5').show();"  actionListener="#{ClienteBean.btnEliminar(cli.idCliente)}" update="table_cliente">
+                           </p:commandLink>
+                       </p:column-->
+                        
+                    </p:dataTable> 
+                
+                </p:dialog>
+                
+                
                 <p:dialog header="Nuevo cliente" widgetVar="dlg3" showEffect="explode" hideEffect="explode" height="350" width="50%">
 
                     <h:form class="center">                     
                         
-                        <p:panelGrid columns="2"  >
+                        <p:panelGrid columns="4"  >
 
-                            <h:outputLabel value="NOMBRE "/>
+                            <h:outputLabel value="NOMBRES"/>
                             <p:inputText value="#{ClienteBean.nombre}" required="true" />  
 
                             <h:outputLabel value="APELLIDOS "/>
                             <p:inputText value="#{ClienteBean.apellidos}" required="true" />
-
+                            
+                            <h:outputLabel value="NIT"/>
+                            <p:inputText value="#{ClienteBean.nit}" required="true" />
+                            
                             <h:outputLabel value="TELEFONO"/>
-                            <p:inputText value="#{ClienteBean.telefono}" required="true" />
-
+                            <p:inputText value="#{ClienteBean.telefono}" required="true" >
+                             <!--f:validateLength minimum="8" /-->
+                            </p:inputText>
+                            
+                            <h:outputLabel value="TIPO DE TELEFONO"/>
+                            <p:selectOneMenu id="tipo_tel" style="width:125px" value="#{ClienteBean.tipo_telefono}">
+                                <f:selectItems value="#{ClienteBean.listaTipoTelefono}" var="tel" itemLabel="#{tel.nombre}" itemValue="#{tel.id}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel value="CORREO"/>
+                            <p:inputText value="#{ClienteBean.correo}" required="true" />
+                            
+                            <h:outputLabel value="FECHA DE NACIMIENTO"/>
+                            <p:calendar id="button" value="#{ClienteBean.fecha_nac}" navigator="true" pattern="dd/MM/yyyy" mask="true" />
+                            
+                            <h:outputLabel value="TIPO DE CLIENTE"/>
+                            <p:selectOneMenu id="tipo" style="width:125px" value="#{ClienteBean.tipo_cliente}">
+                                <f:selectItems value="#{ClienteBean.listaTipoCliente}" var="tipo" itemLabel="#{tipo.nombre}" itemValue="#{tipo.id}"/>
+                            </p:selectOneMenu>
+                            
                             <h:outputLabel value="DIRECCION"/>
                             <p:inputText value="#{ClienteBean.direccion}" required="true" />
-
-                           <h:outputLabel value="NIT"/>
-                           <p:inputText value="#{ClienteBean.nit}" required="true" />
+                            
+                            <p:outputLabel for="depto" value="DEPARTAMENTO" />
+                            <p:selectOneMenu id="depto" style="width:125px" value="#{ClienteBean.departamento}">
+                                <f:selectItems value="#{ClienteBean.listaDepartamentos}" var="depto" itemLabel="#{depto.nombre}" itemValue="#{depto.id}" />
+                                <p:ajax event="itemSelect" listener="#{ClienteBean.municipios()}" update="muni"/>
+                            </p:selectOneMenu>
+                                                        
+                            <p:outputLabel for="muni" value="MUNICIPIO" />
+                            <p:selectOneMenu id="muni" value="#{ClienteBean.municipio}" style="width:125px">
+                                <f:selectItems value="#{ClienteBean.listaMunicipios}" var="muni" itemLabel="#{muni.nombre}" itemValue="#{muni.id}" />
+                            </p:selectOneMenu>
+                           
                         </p:panelGrid> 
                     
                     <br></br>
@@ -100,14 +190,16 @@
                      
                         <p:panelGrid columns="2"  >
                             
+                            <h:outputLabel value="TIPO DE CLIENTE"/>
+                            <p:selectOneMenu id="tipo" style="width:125px" value="#{ClienteBean.tipoClienteEdit}">
+                                <f:selectItems value="#{ClienteBean.listaTipoCliente}" var="tipo" itemLabel="#{tipo.nombre}" itemValue="#{tipo.id}"/>
+                            </p:selectOneMenu>
+                            
                             <h:outputLabel value="NOMBRE "/>
                             <p:inputText value="#{ClienteBean.nombreEdit}" required="true" />  
 
                             <h:outputLabel value="APELLIDOS "/>
                             <p:inputText value="#{ClienteBean.apellidoEdit}" required="true" />
-
-                            <h:outputLabel value="TELEFONO"/>
-                            <p:inputText value="#{ClienteBean.telefonoEdit}" required="true" />
 
                             <h:outputLabel value="DIRECCION"/>
                             <p:inputText value="#{ClienteBean.direccionEdit}" required="true" />
@@ -122,7 +214,7 @@
                 
                 </p:dialog>
                 
-                 <p:dialog header="Eliminar cliente" widgetVar="dlg5" showEffect="explode" hideEffect="explode" height="130" width="250" id="modalEliminar">
+                <p:dialog header="Eliminar cliente" widgetVar="dlg5" showEffect="explode" hideEffect="explode" height="130" width="250" id="modalEliminar">
 
                     <h:form class="center">                     
                         <p:panelGrid columns="2"  >                            
@@ -135,7 +227,7 @@
                 
             </div>
             <div class="footer">
-                <p> © 2019 Copyright: jose.coloj@gmail.com</p>     
+                <p> © 2019 Copyright </p>     
                 
             </div>
         </div>    
